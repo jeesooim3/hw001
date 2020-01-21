@@ -1,0 +1,120 @@
+@import "../../../scss/mixin.scss";
+
+$color-green: #03c75a;
+.img_area {
+  height: 280px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.03);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.title_area {
+  color: #333;
+  font-size: 1.7rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.3px;
+  font-weight: bold;
+  em {
+    color: $color-green;
+  }
+}
+.info_area {
+  position: relative;
+  top: -23px;
+  padding: 0 18px;
+  .inner {
+    padding: 18px 18px 15px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+  .tit_area {
+    font-weight: bold;
+    letter-spacing: -0.3px;
+    color: #333;
+    .icon {
+      width: 29px;
+      height: 14px;
+      margin-left: 8px;
+    }
+  }
+  .etc_area {
+    .txt_price {
+      font-size: 1.9rem;
+      letter-spacing: -0.3px;
+      line-height: 2.4rem;
+      color: #fc4c42;
+      font-weight: bold;
+    }
+    .txt_price_fixed {
+      font-size: 1.3rem;
+      margin-left: 5px;
+      color: #8f8f8f;
+      text-decoration: line-through;
+    }
+    .txt_rate {
+      color: #333;
+      font-weight: bold;
+      margin-left: 12px;
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+      .icon {
+        width: 12px;
+        height: 11px;
+        margin-right: 2px;
+      }
+    }
+    .txt_order {
+      font-size: 1.4rem;
+      line-height: 1.9rem;
+      letter-spacing: -0.4px;
+      color: #666;
+      em {
+        color: #333;
+        font-weight: bold;
+      }
+      &::before {
+        content: "";
+        display: inline-block;
+        vertical-align: top;
+        width: 1px;
+        height: 12px;
+        background: #ededed;
+        margin: 8px 7px 0;
+      }
+    }
+  }
+  .txt_area {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    color: #333;
+    letter-spacing: -0.3px;
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #f2f2f2;
+  }
+}
+.photo_area {
+  padding: 26px 18px 0;
+  .list {
+    @include system-scroll(x);
+    margin-top: 12px;
+  }
+  .list_item {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    height: 104px;
+    .count {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 23px;
+      height: 23px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+    }
+  }
+  .list_item + .list_item {
+    margin-left: 1px;
+  }
+}

@@ -1,0 +1,273 @@
+// mixins
+
+// align center
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// clear float
+@mixin clear {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+// hide structure
+@mixin blind {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+}
+
+// hide text
+@mixin blind-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+}
+
+// ratio image
+@mixin ratio-img($ratio) {
+  overflow: hidden;
+  @if ($ratio == "1:1") {
+    padding-top: 100%;
+  }
+  @if ($ratio == "3:2") {
+    padding-top: 66.66%;
+  }
+  @if ($ratio == "4:3") {
+    padding-top: 75%;
+  }
+  @if ($ratio == "16:9") {
+    padding-top: 56.25%;
+  }
+  @if ($ratio == "2:1") {
+    padding-top: 50%;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+// ellipsis (rem base)
+@mixin ellipsis($lines: 1, $line-height: 2) {
+  display: block; // inline 요소에 적용 대비, -webkit-box 지원 안함 대비
+  @if ($lines > 1) {
+    display: -webkit-box;
+    overflow: hidden;
+    max-height: #{$lines * $line-height}rem;
+    line-height: #{$line-height}rem;
+    text-overflow: ellipsis;
+    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    white-space: normal; // 플리킹 모듈 nowrap 상속 대비
+  } @else {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// speech bubble
+// $direction: arrow의 방향, top | right | bottom | left
+// $position: arrow의 위치, 0px ~ 100%,
+// $position: 가운데에 위치하려면 50%
+// $position: 오른쪽이나 하단 기준으로 위치를 정하려면 100%로 설정 후 마진으로 위치 조정
+// $border-color: border color
+// $background-color: background color
+// $box-shadow: box-shadow
+// $wrapper-background-color: 말풍선이 위치하는 영역의 배경색 (배경 opacity적용 시 arrow의 배경색 설정을 위해)
+@function rgba-to-rgb($rgba, $background: #fff) {
+  @return mix(
+    rgb(red($rgba), green($rgba), blue($rgba)),
+    $background,
+    alpha($rgba) * 100%
+  );
+}
+@mixin speech-bubble(
+  $direction,
+  $position,
+  $arrow-size,
+  $border-color,
+  $background-color,
+  $box-shadow,
+  $wrapper-background-color: #fff
+) {
+  display: inline-block;
+  position: relative;
+  border: 1px solid $border-color;
+  background: $background-color;
+  background-clip: padding-box;
+  box-shadow: $box-shadow;
+  box-sizing: border-box;
+  vertical-align: top;
+
+  // arrow
+  &::after {
+    display: block;
+    position: absolute;
+    width: $arrow-size;
+    height: $arrow-size;
+    border: 1px solid;
+    border-color: transparent $border-color $border-color transparent;
+    background: rgba-to-rgb($background-color, $wrapper-background-color);
+    background-clip: padding-box;
+    content: "";
+    #{$direction}: calc(#{- ($arrow-size / 2) - 1px});
+
+    @if ($direction == bottom or $direction == right) {
+      // box-shadow: $box-shadow;
+    }
+
+    @if ($direction == top or $direction == bottom) {
+      left: $position;
+    }
+
+    @if ($direction == left or $direction == right) {
+      top: $position;
+    }
+
+    @if ($direction == top) {
+      transform: translateX(-50%) rotate(225deg);
+    }
+
+    @if ($direction == bottom) {
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    @if ($direction == right) {
+      transform: translateY(-50%) rotate(-45deg);
+    }
+
+    @if ($direction == left) {
+      transform: translateY(-50%) rotate(135deg);
+    }
+  }
+}
+
+// temporary image
+@mixin tmp-img($width, $height) {
+  display: inline-block;
+  width: #{$width}px;
+  height: #{$height}px;
+  background: #000;
+  vertical-align: top;
+}
+
+// system scroll
+@mixin system-scroll($direction) {
+  overflow: hidden;
+  @if $direction == "x" {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  @if $direction == "y" {
+    overflow-y: auto;
+  }
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// input, textarea placeholder
+@mixin placeholder($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &::-ms-input-placeholder {
+    color: $color;
+  }
+  &::placeholder {
+    opacity: 1; // for firefox
+    color: $color;
+  }
+}
+
+// sticky
+@mixin sticky {
+  /* stylelint-disable */
+  position: -webkit-sticky;
+  position: sticky;
+  /* stylelint-enable */
+}
+
+// reset for place
+@mixin reset-styles {
+  img,
+  svg {
+    display: inline-block;
+    vertical-align: top;
+  }
+  input,
+  select,
+  button {
+    border-radius: 0;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  button {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+}
+
+// get safe area
+@function get-sa-padding-bottom($padding-bottom) {
+  $value: calc(#{$padding-bottom}px + env(safe-area-inset-bottom));
+  @return $value;
+}
+@function get-sa-padding-bottom-constant($padding-bottom) {
+  $value: calc(#{$padding-bottom}px + constant(safe-area-inset-bottom));
+  @return $value;
+}
+// padding bottom with safe area
+@mixin sa-padding-bottom($padding-bottom: 0) {
+  padding-bottom: #{$padding-bottom}px;
+  /* stylelint-disable */
+  padding-bottom: get-sa-padding-bottom-constant($padding-bottom);
+  padding-bottom: get-sa-padding-bottom($padding-bottom);
+  /* stylelint-enable */
+}
+// padding with safe area
+@mixin sa-padding($padding-top, $padding-horizontal, $padding-bottom: 0) {
+  padding: #{$padding-top}px #{$padding-horizontal}px #{$padding-bottom}px;
+  /* stylelint-disable */
+  padding: #{$padding-top}px #{$padding-horizontal}px
+    get-sa-padding-bottom-constant($padding-bottom);
+  padding: #{$padding-top}px #{$padding-horizontal}px
+    get-sa-padding-bottom($padding-bottom);
+  /* stylelint-enable */
+}
+// safe area excluded width for fixed elements
+@mixin sa-fixed-width {
+  width: calc(100vw);
+  /* stylelint-disable */
+  width: calc(
+    100vw - constant(safe-area-inset-right) - constant(safe-area-inset-left)
+  );
+  width: calc(100vw - env(safe-area-inset-right) - env(safe-area-inset-left));
+  /* stylelint-enable */
+  margin: 0 auto;
+  box-sizing: border-box;
+}

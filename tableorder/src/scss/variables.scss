@@ -1,0 +1,55 @@
+// variables
+
+// height
+$height-header: 48px;
+$height-simple-header: 57px;
+$height-tab: 51px;
+
+// color
+$color-green: #03c75a;
+$color-bg-green: #03c75a;
+$color-blue: #0068c3;
+$color-michelin: #bd2333;
+$colors-business: (
+  default: #439cf8,
+  bar: #f9624b,
+  cafe: #f9624b,
+  hairshop: #ea37a7,
+  hospital: #ee3a3a,
+  nailshop: #d61beb,
+  newplace: #029dff,
+  pension: #9264c2,
+  place: #99643b,
+  restaurant: #f9624b,
+  visit: #2ad14b
+);
+$colors-folder: (
+  default: #00d353,
+  color1: #ff596e,
+  color2: #ffc801,
+  color3: #01c6d8,
+  color4: #e355a9,
+  color5: #767676,
+  color6: #ff8801,
+  color7: #8fc049,
+  color8: #42a37c,
+  color9: #ff98a0,
+  color10: #8a94be,
+  color11: #4596e2,
+  color12: #005188
+);
+$colors-visit: (
+  default: $color-bg-green,
+  suggestion: #0485ff
+);
+// animation timing function
+$ease-in-cubic: cubic-bezier(0.55, 0.06, 0.68, 0.19);
+$ease-out-cubic: cubic-bezier(0.22, 0.61, 0.36, 1);
+$ease-out-cubic-v2: cubic-bezier(0.22, 0.45, 0.36, 1);
+$ease-in-out-cubic: cubic-bezier(0.65, 0.05, 0.36, 1);
+$ease-out-back: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+// font
+$font-nanum-square: "NanumSquare";
+$font-nanum-square-light: "NanumSquareLight";
+$font-nanum-square-bold: "NanumSquareBold";
+$font-nanum-square-extra-bold: "NanumSquareExtraBold";

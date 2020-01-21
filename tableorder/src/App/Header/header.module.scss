@@ -1,0 +1,124 @@
+@import "../../scss/mixin.scss";
+
+$color-green: #03c75a;
+.header {
+  background: linear-gradient(to left, #4bcdcc, #01d760);
+  min-height: 172px;
+  .tit_area {
+    color: #fff;
+    padding: 18px;
+    overflow: hidden;
+    .logo_area {
+      float: left;
+      .icon {
+        width: 22px;
+        height: 22px;
+        fill: #fff;
+      }
+    }
+    .tit {
+      color: #fff;
+      font-size: 2rem;
+      line-height: 2rem;
+      letter-spacing: -0.3px;
+      font-weight: bold;
+      margin-left: 10px;
+      float: left;
+    }
+    .list {
+      float: right;
+      .list_item {
+        font-weight: bold;
+        letter-spacing: -0.2px;
+      }
+      .list_item + .list_item {
+        &::before {
+          content: "";
+          margin: 4px 10px 0 10px;
+          display: inline-block;
+          vertical-align: top;
+          width: 1px;
+          height: 14px;
+          background: rgba(255, 255, 255, 0.2);
+        }
+      }
+    }
+  }
+  .tab_area {
+    margin: 0 auto;
+    width: 249px;
+    border-radius: 24px;
+    box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+    background-color: rgba(0, 0, 0, 0.1);
+    .tab {
+      border-radius: 24px;
+      display: inline-block;
+      vertical-align: top;
+      padding: 11px 23px 10px;
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .icon {
+      fill: #fff;
+      width: 15px;
+      height: 15px;
+      margin: 0 5px -2px 0;
+    }
+    .tab.active {
+      color: #13b773;
+      background: #fff;
+      font-weight: 800;
+      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+      .icon {
+        fill: #00b269;
+      }
+    }
+  }
+  .category_area {
+    @include system-scroll(x);
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    padding: 9px 18px 0;
+    margin-top: 18px;
+    border-bottom: 1px solid #f2f2f2;
+    .item {
+      display: inline-block;
+      vertical-align: top;
+      padding: 16px 0;
+      letter-spacing: -0.3px;
+      font-size: 2rem;
+      line-height: 2.4rem;
+      color: #333;
+      position: relative;
+    }
+    .item.active {
+      color: $color-green;
+      font-weight: 800;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 16px;
+        right: -6px;
+        width: 5px;
+        height: 5px;
+        background: #fc4c42;
+        border-radius: 50%;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+        background: $color-green;
+        border-radius: 2px;
+      }
+    }
+    .item + .item {
+      margin-left: 20px;
+    }
+  }
+}

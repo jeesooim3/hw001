@@ -1,0 +1,68 @@
+@import "../../../scss/mixin.scss";
+
+.list_area {
+  padding: 17px 0 40px;
+  .list {
+    @include system-scroll(x);
+    padding: 0 18px;
+  }
+  .list_item {
+    @include clear;
+    display: inline-block;
+    vertical-align: top;
+    width: 221px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.05);
+  }
+  .list_item + .list_item {
+    margin-left: 10px;
+  }
+  .img {
+    float: left;
+  }
+  .info_area {
+    position: relative;
+    overflow: hidden;
+    padding: 19px 47px 17px 12px;
+    box-shadow: 0 0 0 1px #ececec inset;
+    border-radius: 0 5px 5px 0;
+    .tit_area {
+      font-size: 1.4rem;
+      color: #333;
+      letter-spacing: -0.3px;
+      font-weight: bold;
+    }
+    .price_area {
+      color: #fc4c42;
+      font-weight: bold;
+      font-size: 1.3rem;
+      line-height: 1.6rem;
+      letter-spacing: -0.3px;
+    }
+  }
+  .icon_area {
+    position: absolute;
+    right: 0;
+    width: 47px;
+    top: 11px;
+    bottom: 11px;
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      right: 14px;
+      transform: translate(0, -50%);
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      bottom: 0;
+      background: #f6f6f6;
+      width: 1px;
+    }
+  }
+}

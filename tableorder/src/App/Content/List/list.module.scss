@@ -1,0 +1,137 @@
+@import "../../../scss/mixin.scss";
+
+.list_area {
+  padding: 4px 0 18px;
+  background: #fff;
+  .list_item {
+    @include clear;
+    padding: 22px 18px 22px 16px;
+  }
+  .list_item + .list_item {
+    border-top: 1px solid #f2f2f2;
+  }
+  .thumb_area {
+    border-radius: 3px;
+    overflow: hidden;
+    float: left;
+    width: 100px;
+    height: 110px;
+    margin-right: 14px;
+    background-size: 100px 110px;
+    background-image: url("../../../images/img_default_food.png");
+  }
+  .info_area {
+    position: relative;
+    overflow: hidden;
+    padding-right: 55px;
+  }
+
+  .tit_area {
+    .inner {
+      @include ellipsis($lines: 2);
+      font-size: 1.7rem;
+      line-height: 2.1rem;
+      letter-spacing: -0.3px;
+      font-weight: bold;
+      margin-right: 7px;
+    }
+  }
+  %label {
+    display: inline-block;
+    vertical-align: top;
+    width: 29px;
+    height: 16px;
+    border-radius: 8px;
+    margin-top: 1px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.6rem;
+    text-align: center;
+  }
+  .label_area {
+    display: inline-block;
+    vertical-align: top;
+    .label_hot {
+      @extend %label;
+      background: #ff61a7;
+    }
+    .label_represent {
+      @extend %label;
+      background: #ffaf3b;
+    }
+    .label_new {
+      @extend %label;
+      width: 16px;
+      background: #fc4c42;
+      font-style: oblique;
+    }
+    .label {
+      margin-top: 5px;
+    }
+    .label + .label {
+      margin-left: 5px;
+    }
+  }
+  .etc_area {
+    margin-top: 8px;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    letter-spacing: -0.4px;
+    color: #666;
+    .item {
+      display: inline-block;
+      vertical-align: top;
+      em {
+        color: #333;
+        font-weight: 600;
+      }
+      .icon {
+        width: 12px;
+        height: 11px;
+        margin-right: 2px;
+      }
+    }
+    .item + .item::before {
+      content: "";
+      display: inline-block;
+      vertical-align: top;
+      margin: 3px 7px 0;
+      width: 1px;
+      height: 12px;
+      background: #ededed;
+    }
+  }
+  .txt_area {
+    @include ellipsis($lines: 2);
+    margin-top: 5px;
+    font-size: 1.4rem;
+    letter-spacing: -0.4px;
+    color: #666;
+  }
+  .price_area {
+    margin-top: 5px;
+    color: #fc4c42;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    letter-spacing: -0.3px;
+  }
+  .etc_area + .price_area {
+    margin-top: 10px;
+  }
+  .icon_area {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.04);
+    padding: 10px;
+    border-radius: 5px;
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

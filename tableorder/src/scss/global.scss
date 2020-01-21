@@ -1,0 +1,68 @@
+:global {
+  html {
+    height: 100%;
+  }
+  // body width for safe area
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  #app-root {
+    flex: 1;
+    /* stylelint-disable */
+    width: calc(
+      100vw - constant(safe-area-inset-right) - constant(safe-area-inset-left)
+    );
+    width: calc(100vw - env(safe-area-inset-right) - env(safe-area-inset-left));
+    /* stylelint-enable */
+    max-width: 414px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .place_basic_wrapper {
+    padding-top: 48px;
+    box-sizing: border-box;
+  }
+  .place_simple_wrapper {
+    height: 100%;
+    padding-top: 57px;
+    box-sizing: border-box;
+  }
+  .place_section_hr {
+    height: 8px;
+    background: #f4f4f4;
+  }
+  .place_modal_bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 7000;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .place_modal_content {
+    position: fixed;
+    z-index: 7010;
+  }
+}
+
+// font-face
+@font-face {
+  font-family: $font-nanum-square-light;
+  src: url("~src/assets/fonts/NanumSquareLight.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-nanum-square;
+  src: url("~src/assets/fonts/NanumSquareRegular.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-nanum-square-bold;
+  src: url("~src/assets/fonts/NanumSquareBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-nanum-square-extra-bold;
+  src: url("~src/assets/fonts/NanumSquareExtraBold.ttf") format("truetype");
+}
